@@ -1,0 +1,31 @@
+#ifndef vector_c_h
+#define vector_c_h
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct VectorN
+{
+    size_t dimension;
+    size_t elementSize;
+    void* zero;                         //∃(0): a + 0 = a
+    void* one;                          //∃(1): a * 1 = a
+    void* coordinates;
+    void* (*minus)(void*);              //∃(a*): a + a* = 0
+    void* (*sum)(void* x, void* y);     //Determination of the sum of 2 elements
+    void* (*mult)(void* x, void* y);    //Determination of the multiplication of 2 elements
+};
+
+struct VectorN* Create0(size_t size, size_t elementSize, void* zero, void* one, void* (*minus)(void*), void* (*sum)(void* x1, void* x2), void* (*mult)(void*, void*));
+struct VectorN* Create1(size_t size, size_t elementSize, void* zero, void* one, void* (*minus)(void*), void* (*sum)(void* x1, void* x2), void* (*mult)(void*, void*));
+struct VectorN* CreateFromValues(size_t size, size_t elementSize, void* zero, void* one, void* values, void* (*minus)(void*), void* (*sum)(void* x1, void* x2), void* (*mult)(void*, void*));
+
+void* GetN(size_t coord, struct VectorN* v);
+void* SetN(size_t coord, void* value, struct VectorN* v);
+
+struct VectorN* sumN(struct VectorN* v1, struct VectorN* v2);
+struct VectorN* scalarMultN(struct VectorN* v1, struct VectorN* v2);
+
+void* Error(char* msg);
+
+#endif /* vector_c_h */
