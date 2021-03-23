@@ -111,7 +111,7 @@ struct VectorN* ScalarMultN(struct VectorN* v1, struct VectorN* v2)
     if (v1 && v2){
         if(v1->elementSize == v2->elementSize){
             if (v1->dimension == v2->dimension){
-                struct VectorN* v3 = Create0(v1->dimension, v1->elementSize, v1->zero, v1->one, v1->sum, v1->minus, v1->mult);
+                struct VectorN* v3 = Create0(v1->dimension, v1->elementSize, v1->zero, v1->one, v1->minus, v1->sum, v1->mult);
                 for (int i = 0; i < v1->dimension; i++){
                     void* el1 = GetN(i, v1);
                     void* el2 = GetN(i, v2);

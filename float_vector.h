@@ -3,6 +3,7 @@
 #include "vector.h"
 #include <stdio.h>
 
+
 void* minus_float(void* x);
 void* sum_float(void* x, void* y);
 void* mult_float(void* x, void* y);

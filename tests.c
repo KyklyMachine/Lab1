@@ -3,6 +3,7 @@
 #include "complex_vector.h"
 #include <stdlib.h>
 
+
 void* floatVectorTests()
 {
     float* coord1 = (float*)malloc(sizeof(float)*3);
@@ -19,7 +20,9 @@ void* floatVectorTests()
     struct VectorN* v2 = createFromValuesFloat(3, coord2);
     printf("============================================================\n");
     printf("Two vectors with coordinates:\n");
+    printf("v1 = ");
     printVectorFloat(v1);
+    printf("v2 = ");
     printVectorFloat(v2);
     
     printf("\nFirst test. Summ of vectors.\n");
@@ -54,7 +57,9 @@ void* complexVectorTests()
     struct VectorN* v2 = createFromValuesComplex(3, cord2);
     printf("============================================================\n");
     printf("Two vectors with coordinates:\n");
+    printf("v1 = ");
     printVectorComplex(v1);
+    printf("v2 = ");
     printVectorComplex(v2);
     
     printf("\nFirst test. Summ of vectors.\n");
@@ -82,4 +87,40 @@ void* complexVectorTests()
     printComplexCoord(GetN(0, v_mult));
     printf("\n============================================================\n");
     return 0;
+};
+
+void* floatVectorTestsError()
+{
+    float* coord1 = (float*)malloc(sizeof(float)*3);
+        for(int i = 0; i < 3; i++)
+        {
+            *(coord1+i) = 1.5f + i;
+        };
+    struct VectorN* v1 = createFromValuesFloat(3, coord1);
+    float* coord2 = (float*)malloc(sizeof(float)*3);
+        for(int i = 0; i < 3; i++)
+        {
+            *(coord2+i) = 2.2f + i;
+        };
+    struct VectorN* v2 = createFromValuesFloat(4, coord2);
+    printf("2 vectors created:\n");
+    printVectorFloat(v1);
+    printVectorFloat(v2);
+    printf("When trying to scalar multiplication of 2 vectors with different dimensions, an error pops up:\n");
+    struct VectorN* v_mult = ScalarMultN(v1, v2);
+    return v_mult;
+};
+
+void* complexVectorTestsError()
+{
+    float cord1[2][3] = {1.5, 2.2, 3, 4, 5.8, 6};
+    float cord2[2][4] = {6, 5.8, 4, 3, 2.2, 1.5, 2.4, 1};
+    struct VectorN* v1 = createFromValuesComplex(3, cord1);
+    struct VectorN* v2 = createFromValuesComplex(4, cord2);
+    printf("2 vectors created:\n");
+    printVectorComplex(v1);
+    printVectorComplex(v2);
+    printf("When trying to scalar multiplication of 2 vectors with different dimensions, an error pops up:\n");
+    struct VectorN* v_mult = ScalarMultN(v1, v2);
+    return v_mult;
 };

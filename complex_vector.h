@@ -1,8 +1,8 @@
 #ifndef complex_vector_h
 #define complex_vector_h
-
 #include <stdio.h>
 #include "vector.h"
+
 
 typedef struct ComplexCoord {
     float Real;

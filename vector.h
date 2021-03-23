@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 struct VectorN
 {
     size_t dimension;                   //Vector dimension
@@ -33,7 +34,5 @@ struct VectorN* MinusN(struct VectorN* v1, struct VectorN* v2);
 
 //Output errors
 void* Error(char* msg);
-
-#endif /* vector_c_h */
 
 #endif /* vector_c_h */

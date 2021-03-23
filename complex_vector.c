@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 void* getReal(complex* coordinates)
 {
     return &(coordinates->Real);
