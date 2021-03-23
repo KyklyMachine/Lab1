@@ -9,7 +9,7 @@ void* minus_float(void* x)
 {
     float* a = (float*)x;
     float* c = malloc(sizeof(float));
-    *c = 0.0f - *a;
+    *c = - *a;
     return (void*)c;
 };
 
@@ -31,34 +31,29 @@ void* mult_float(void* x, void* y)
     return (void*)c;
 };
 
-struct VectorN* Create0Float(size_t size){
-    if (zero_float == NULL){ //not zero_float
+void* init_zero_one_float(){
+    if (zero_float == NULL)
+    {
         zero_float = malloc(sizeof(float));
         *(float*)zero_float = 0.0f;
         one_float = malloc(sizeof(float));
         *(float*)one_float = 1.0f;
-    }
+    };
+    return 0;
+};
+
+struct VectorN* create0Float(size_t size){
+    init_zero_one_float();
     return Create0(size, sizeof(float), zero_float, one_float, minus_float, sum_float, mult_float);
 };
 
-struct VectorN* Create1Float(size_t size){
-    if (zero_float == NULL){ //not zero_float
-        zero_float = malloc(sizeof(float));
-        *(float*)zero_float = 0.0f;
-        one_float = malloc(sizeof(float));
-        *(float*)one_float = 1.0f;
-    }
+struct VectorN* create1Float(size_t size){
+    init_zero_one_float();
     return Create1(size, sizeof(float), zero_float, one_float, minus_float, sum_float, mult_float);
 };
 
-struct VectorN* CreateFromValuesFloat(size_t size, void* values){
-    if (zero_float == NULL){ //not zero_float
-        zero_float = malloc(sizeof(float));
-        *(float*)zero_float = 0.0f;
-        one_float = malloc(sizeof(float));
-        *(float*)one_float = 1.0f;
-    }
-    //printf("%f", *(float*)values);
+struct VectorN* createFromValuesFloat(size_t size, void* values){
+    init_zero_one_float();
     return CreateFromValues(size, sizeof(float), zero_float, one_float, values, minus_float, sum_float, mult_float);
 };
 
@@ -86,5 +81,5 @@ struct VectorN* scanVectorFloat()
     for(int i = 0; i < dimension; i++)
     {
     };
-    return CreateFromValuesFloat(dimension, coordinates);
+    return createFromValuesFloat(dimension, coordinates);
 };

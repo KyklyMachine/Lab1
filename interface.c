@@ -9,13 +9,13 @@
 void* floatVectorsUI()
 {
     int command;
-    printf("Choose an operation. 1 - vectors sum, 2 - scalar multiplication, 3 - tests, 0 - exit: \n");
+    printf("Choose an operation: 1 - vectors sum, 2 - subtraction of vectors, 3 - scalar multiplication, 4 - tests, 0 - exit: \n");
     scanf("%d", &command);
     if (command == 1)
     {
         struct VectorN* v1 = scanVectorFloat();
         struct VectorN* v2 = scanVectorFloat();
-        struct VectorN* v3 = sumN(v1, v2);
+        struct VectorN* v3 = SumN(v1, v2);
         printf("Result: ");
         printVectorFloat(v3);
     }
@@ -23,11 +23,19 @@ void* floatVectorsUI()
     {
         struct VectorN* v1 = scanVectorFloat();
         struct VectorN* v2 = scanVectorFloat();
-        struct VectorN* v3 = scalarMultN(v1, v2);
+        struct VectorN* v3 = MinusN(v1, v2);
         printf("Result: ");
         printVectorFloat(v3);
     }
     else if (command == 3)
+    {
+        struct VectorN* v1 = scanVectorFloat();
+        struct VectorN* v2 = scanVectorFloat();
+        struct VectorN* v3 = ScalarMultN(v1, v2);
+        printf("Result: ");
+        printVectorFloat(v3);
+    }
+    else if (command == 4)
     {
         floatVectorTests();
     }
@@ -46,13 +54,13 @@ void* floatVectorsUI()
 void* complexVetorsUI()
 {
     int command;
-    printf("Choose an operation. 1 - vectors sum, 2 - scalar multiplication, 3 - tests, 0 - exit: \n");
+    printf("Choose an operation: 1 - vectors sum, 2 - subtraction of vectors, 3 - scalar multiplication, 4 - tests, 0 - exit: \n");
     scanf("%d", &command);
     if (command == 1)
     {
         struct VectorN* v1 = scanVectorComplex();
         struct VectorN* v2 = scanVectorComplex();
-        struct VectorN* v3 = sumN(v1, v2);
+        struct VectorN* v3 = SumN(v1, v2);
         printf("Result: ");
         printVectorComplex(v3);
     }
@@ -60,11 +68,19 @@ void* complexVetorsUI()
     {
         struct VectorN* v1 = scanVectorComplex();
         struct VectorN* v2 = scanVectorComplex();
-        struct VectorN* v3 = scalarMultN(v1, v2);
+        struct VectorN* v3 = MinusN(v1, v2);
         printf("Result: ");
         printVectorComplex(v3);
     }
     else if (command == 3)
+    {
+        struct VectorN* v1 = scanVectorComplex();
+        struct VectorN* v2 = scanVectorComplex();
+        struct VectorN* v3 = ScalarMultN(v1, v2);
+        printf("Result: ");
+        printVectorComplex(v3);
+    }
+    else if (command == 4)
     {
         complexVectorTests();
     }
